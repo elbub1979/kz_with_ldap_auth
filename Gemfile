@@ -5,6 +5,8 @@ ruby '3.0.2'
 
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.1.3'
+gem 'devise'
+gem 'devise_ldap_authenticatable'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
