@@ -1,32 +1,42 @@
-h2>Log in</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username, "Windows Account Name" %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<main class="w-100 m-auto">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="row mb-3">
+            <%= f.label :username, "Login", class: "col-md-4 col-form-label text-md-end" %><br/>
+            <div class="col-md-6">
+              <%= f.text_field :username, autofocus: true, autocomplete: "username", :placeholder => "Your login", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <%= f.label :password, 'Password', class: "col-md-4 col-form-label text-md-end" %><br/>
+            <div class="col-md-6">
+              <%= f.password_field :password, autocomplete: "current-password", :placeholder => "Your password", class: "form-control " %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-4 offset-md-4">
+              <div class="form-check">
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-0 mt-4">
+            <div class="col-md-8 offset-md-3">
+              <%= f.submit 'Sign in', class: "btn btn-primary py-1 px-4" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= form_for(:user, :url => session_path(:user)) do |f| %>
-  <div class="form-inputs">
-    <%= f.text_field :username ,:placeholder => "Login id"  %><br> <br>
-    <%= f.password_field :password,:placeholder => "Password"  %>
-
-    <label for="check_box_type">Login Server </label><%= select_tag :log, options_for_select([ [" Domain Server","domain"],["Local Server", "local"]])%>
-
-<%= f.submit 'Sign in' %>
-<% end %>
-
-<%= render "users/shared/links" %>
+</main>
