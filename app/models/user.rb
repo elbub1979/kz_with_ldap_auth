@@ -8,7 +8,8 @@ class User < ApplicationRecord
   private
 
   def ldap_before_save
-    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").try(:first) || ''
-    self.name = Devise::LDAP::Adapter.get_ldap_param(self.username, "name").try(:first) || ''
+    self.name = Devise::LDAP::Adapter.get_ldap_param(self.username, "name").try(:first) || username
+    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").try(:first) ||
+      "#{username}@#{Rails.application.credentials.devise.domain_name}"
   end
 end
