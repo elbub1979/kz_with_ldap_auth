@@ -5,8 +5,10 @@ class User < ApplicationRecord
 
   before_save :ldap_before_save
 
+  private
+
   def ldap_before_save
-    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").try(:first)
-    self.name = Devise::LDAP::Adapter.get_ldap_param(self.username, "name").try(:first)
+    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username, "mail").try(:first) || ''
+    self.name = Devise::LDAP::Adapter.get_ldap_param(self.username, "name").try(:first) || ''
   end
 end
