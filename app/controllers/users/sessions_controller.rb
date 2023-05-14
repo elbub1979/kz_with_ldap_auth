@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     possible_user = User.where(username: params['user']['username'])
 
+    # if params[:log] == 'local'
     if possible_user.any?
       self.resource = warden.authenticate!(:database_authenticatable)
 
@@ -20,6 +21,12 @@ class Users::SessionsController < Devise::SessionsController
       respond_with resource, location: after_sign_in_path_for(resource)
     else
       super
+
+      # self.resource = warden.authenticate!(:ldap_authenticatable)
+
+      # sign_in(resource_name, resource)
+      # yield resource if block_given?
+      # respond_with resource, location: after_sign_in_path_for(resource)
     end
   end
 

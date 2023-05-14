@@ -21,6 +21,7 @@ authorizations: &AUTHORIZATIONS
   ## Requires config.ldap_check_attributes_presence in devise.rb to be true
   ## Can have multiple attributes set to true or false to check presence, all must match all to be authorized
   require_attribute_presence:
+    name: true
     mail: true
     telephoneNumber: true
     serviceAccount: false
