@@ -10,10 +10,10 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    possible_user = User.where(username: params['user']['username'])
+    possible_user = User.find_by(username: params['user']['username'])
 
     # if params[:log] == 'local'
-    if possible_user.any?
+    if possible_user && possible_user.encrypted_password != ''
       self.resource = warden.authenticate!(:database_authenticatable)
 
       sign_in(resource_name, resource)
