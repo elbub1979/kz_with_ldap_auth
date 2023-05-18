@@ -47,7 +47,7 @@
           </ul>
         </div>
       <% else %>
-        <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-outline-primary me-2" %>
+        <%= button_to "Sign up", users_registration_new_path, method: :get, class: "btn btn-outline-primary me-2" %>
         <%= button_to "Sign in", new_user_session_path, method: :get, class: "btn btn-primary" %>
       <% end %>
     </div>
