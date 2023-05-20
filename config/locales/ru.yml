@@ -1,0 +1,12 @@
+ru:
+
+
+
+
+  # views
+  users:
+    form:
+      create: 'Создать'
+      login: 'Логин'
+    show:
+      new_record: 'Новая запись'

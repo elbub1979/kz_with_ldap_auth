@@ -4,15 +4,15 @@
       <%= form_with model: @user do |form| %>
         <div class="row mb-3">
           <div class="mb-3">
-            <%= form.label :username, "Username", class: 'col-md-4 col-form-label text-md-end' %>
+            <%= form.label :username, t(".login"), class: 'col-md-4 col-form-label text-md-end' %>
             <div class="col-md-6">
-              <%= form.text_field :username, autofocus: true, autocomplete: "username", :placeholder => "Your login", class: "form-control" %>
+              <%= form.text_field :username, autofocus: true, autocomplete: "username", :placeholder => t(".login"), class: "form-control" %>
             </div>
           </div>
         </div>
         <div class="row mb-0 mt-4">
           <div class="col-md-8 offset-md-3">
-            <%= form.submit 'Create', class: "btn btn-primary py-1 px-4" %>
+            <%= form.submit t('.create'), class: "btn btn-primary py-1 px-4" %>
           </div>
         </div>
       <% end %>
