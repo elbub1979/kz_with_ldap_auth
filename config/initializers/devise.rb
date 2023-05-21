@@ -11,7 +11,7 @@
 Devise.setup do |config|
   # ==> LDAP Configuration
   config.ldap_logger = true
-  config.ldap_create_user = false
+  config.ldap_create_user = true
   config.ldap_update_password = false
   config.ldap_use_admin_to_bind = true
   config.ldap_auth_username_builder = Proc.new() do |attribute, login, ldap|

@@ -10,7 +10,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    possible_user = User.find_by(username: params['user']['username'])
+    username = params['user']['username'].downcase
+    possible_user = User.find_by(username: username)
 
     if possible_user && possible_user.encrypted_password != ''
       self.resource = warden.authenticate!(:database_authenticatable)

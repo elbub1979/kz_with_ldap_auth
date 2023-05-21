@@ -17,8 +17,11 @@ Rails.application.routes.draw do
     # post '/users/:id', to: 'users#create'
   end
 
-  resources :users
+  namespace :admin do
+    resources :users, except: %i[index show]
+  end
 
+  resources :users, only: %i[index show]
 
   root to: 'static_pages#home'
 end
