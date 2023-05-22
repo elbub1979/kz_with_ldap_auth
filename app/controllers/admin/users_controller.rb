@@ -1,6 +1,8 @@
 class Admin::UsersController < AdminController
   before_action :set_user, only: %i[edit update destroy]
 
+  # standart actions
+
   def new
     @user = User.new
   end
@@ -28,6 +30,12 @@ class Admin::UsersController < AdminController
   end
 
   def destroy; end
+
+  # custom actions
+
+  def ldap_users
+
+  end
 
   private
 
