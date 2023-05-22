@@ -21,5 +21,8 @@ module KzWithLdapAuth
 
     # i18n configs
     config.i18n.default_locale = :ru
+
+    # libs config
+    config.autoload_paths << "#{Rails.root}/lib"
   end
 end

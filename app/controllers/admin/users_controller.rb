@@ -34,7 +34,8 @@ class Admin::UsersController < AdminController
   # custom actions
 
   def ldap_users
-
+    ad = ActiveDirectory::LdapConnect.new
+    @users = ad.read.sort_by { |user| user[:name] }
   end
 
   private

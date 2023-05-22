@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, except: %i[index show]
+    resources :users, except: %i[index show] do
+      collection do
+        get 'ldap_users'
+      end
+    end
   end
 
   resources :users, only: %i[index show]
