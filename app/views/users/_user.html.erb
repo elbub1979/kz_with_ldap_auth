@@ -1,7 +1,14 @@
-<p>
-  <%= @user.name %>
-</p>
-
-<p>
-  <%= @user.username %>
-</p>
+<div>
+  <p>
+    <%= user.name %>
+  </p>
+  <p>
+    <%= user.username %>
+  </p>
+  <p>
+    <%= user.email %>
+  </p>
+  <%= button_to "Create", admin_users_path(user: user),
+                params: user_params(user)%>
+  <%= button_to '', (user) %>
+</div>

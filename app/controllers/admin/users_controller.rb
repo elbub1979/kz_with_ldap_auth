@@ -35,7 +35,8 @@ class Admin::UsersController < AdminController
 
   def ldap_users
     ad = ActiveDirectory::LdapConnect.new
-    @users = ad.read.sort_by { |user| user[:name] }
+    @users = ad.read.map { |user| User.new(user) }.sort_by { |user| user[:name] }
+    render 'users/index'
   end
 
   private
@@ -45,6 +46,6 @@ class Admin::UsersController < AdminController
   end
 
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:name, :username, :email)
   end
 end

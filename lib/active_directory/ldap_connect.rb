@@ -22,7 +22,8 @@ module ActiveDirectory
       ldap.search(base: treebase).map do |entry|
         {
           name: entry['name'][0].to_s,
-          mail: entry['mail'][0].to_s
+          email: entry['mail'][0].to_s,
+          username: entry['samaccountname'][0].to_s
         }
       end
 
