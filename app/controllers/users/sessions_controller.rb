@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     username = params['user']['username'].downcase
     possible_user = User.find_by(username: username)
 
-    if possible_user && possible_user.encrypted_password != ''
+    if possible_user&.valid_password?(params[:user][:password])
       self.resource = warden.authenticate!(:database_authenticatable)
 
       sign_in(resource_name, resource)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net-ldap'
 
 module ActiveDirectory
@@ -26,7 +28,6 @@ module ActiveDirectory
           username: entry['samaccountname'][0].to_s
         }
       end
-
     end
 
     # puts @ldap.bind ? true : false

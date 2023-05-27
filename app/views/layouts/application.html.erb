@@ -54,6 +54,21 @@
   </div>
 </nav>
 
+<div class="dropdown">
+  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+  </a>
+
+  <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+    <li><%= button_to 'Get Users', ldap_users_admin_users_path, method: :get %></li>
+    <li><%= link_to 'New user', new_admin_user_path %></li>
+    <li><%= button_to 'New user', new_admin_user_path, method: :get %></li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+  </ul>
+</div>
+
 <%= button_to 'Get Users', ldap_users_admin_users_path, method: :get %>
 
 <%= yield %>
