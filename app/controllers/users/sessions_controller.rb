@@ -62,13 +62,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def user_params
-    accessible = [
-      :name,
-      :username,
-      :email,
-      :password,
-      :password_confirmation
-    ]
+    accessible = %i[name username email password password_confirmation]
     params.require(:user).permit(accessible)
   end
 end
