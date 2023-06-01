@@ -36,6 +36,45 @@ class Users::SessionsController < Devise::SessionsController
 
       # аутентификация ldap
       self.resource = warden.authenticate!(:ldap_authenticatable)
+
+      # если пользователь отсутствует в локальной базе данных (новый)
+      unless possible_user
+
+        # получить созданного пользователя после ldap аутентификации в локальной базе данных
+        new_user = User.find_by(username: username)
+
+        # если имя отсутствует, получить из контроллера домена или использовать логин в качестве имени
+        unless new_user.name.present?
+          new_user.name = Devise::LDAP::Adapter.get_ldap_param(username, 'name').try(:first) || username
+        end
+
+        # если электронная почта отсутствует, получить из контроллера домена или использовать создать из логина
+        # и имени домена
+        unless new_user.email.present?
+          new_user.email = Devise::LDAP::Adapter.get_ldap_param(username, 'mail').try(:first) ||
+                           "#{username}@#{Rails.application.credentials.devise.domain_name}"
+        end
+
+        # получить список групп, в которых состоит пользователь
+        groups = Devise::LDAP::Adapter.get_ldap_param(username, 'memberof')
+
+        # прервать выполнение метода, если пользователь не состоит в группах
+        return unless groups
+
+        # получить группы из массива в установленном формате (убрать узлы из состава названия группы)
+        groups.map! do |group|
+          group.match(/CN=[а-яА-Яa-zA-Z]+\s*[а-яА-Яa-zA-Z]*/).to_s.split('=')[1]
+        end
+
+        # установить роль администратора, если пользователь состоит в группе доменных администраторов
+        # вынести список групп для проверки членства в credentials
+        if groups.any? { |group| Rails.application.credentials.dig(:ldap, :admin_groups).include?(group) }
+          new_user.role = 1
+        end
+
+        # сохранить обновалённые данные пользователя
+        new_user.save!
+      end
     end
 
     # следующие три строчки кода - копипаста с stackoverflow
@@ -57,7 +96,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def user_params
-    accessible = %i[name username email password password_confirmation]
-    params.require(:user).permit(accessible)
+    params.require(:user).permit(:password)
   end
 end
