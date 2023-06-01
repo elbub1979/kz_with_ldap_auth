@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
-  describe "#short_name" do
+  describe '#short_name' do
     context 'without name' do
-      it 'return empty string' do
-        expect(user.short_name).to eq nil
+      it 'return username' do
+        expect(user.short_name).to eq 'username'
       end
     end
     context 'with last name' do

@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   # получение короткого имени формата Петров И.И.
   def short_name
+    return username  unless name.present?
+
     name_array = name.split(' ')
     lname = name_array[0]
     fname = "#{name_array[1][0].upcase}." unless name_array[1].nil?
