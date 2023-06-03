@@ -1,8 +1,4 @@
 en:
-
-
-
-
   # views
   users:
     form:
@@ -10,3 +6,17 @@ en:
       login: 'Login'
     show:
       new_record: 'New record'
+  admin:
+    users:
+      form:
+        login: "Login"
+        create: "Create"
+        input_login: "input here login"
+        create_user_in_local_base: "Create user in local database"
+        role: "Role"
+        name: "Name"
+        input_name: "input here name"
+        password: "Password"
+        input_password: "input here password"
+        password_confirmation: "Password confirmation"
+        input_password_confirmation: "input here password confirmation"

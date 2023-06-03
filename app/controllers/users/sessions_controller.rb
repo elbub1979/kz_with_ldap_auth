@@ -45,7 +45,8 @@ class Users::SessionsController < Devise::SessionsController
 
         # если имя отсутствует, получить из контроллера домена или использовать логин в качестве имени
         unless new_user.name.present?
-          new_user.name = Devise::LDAP::Adapter.get_ldap_param(username, 'name').try(:first) || username
+          new_user.name = Devise::LDAP::Adapter.get_ldap_param(username, 'name').try(:first) ||
+                          username
         end
 
         # если электронная почта отсутствует, получить из контроллера домена или использовать создать из логина

@@ -1,19 +1,55 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
+  <div class="d-flex justify-content-center">
+    <div class="flex-column">
+      <p class="h4 mb-5"><%= t(".create_user_in_local_base") %></p>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="flex-column">
       <%= form_with model: [:admin, @user] do |form| %>
-        <div class="row mb-3">
-          <div class="mb-3">
+        <div class="row g-5 align-items-center mb-3">
+          <div class="col-3">
             <%= form.label :username, t(".login"), class: 'col-md-4 col-form-label text-md-end' %>
-            <div class="col-md-6">
-              <%= form.text_field :username, autofocus: true, autocomplete: "username", :placeholder => t(".login"), class: "form-control" %>
-            </div>
+          </div>
+          <div class="col">
+            <%= form.text_field :username, autofocus: true, autocomplete: "username", :placeholder => t(".input_login"), class: "form-control" %>
           </div>
         </div>
-        <div class="row mb-0 mt-4">
-          <div class="col-md-8 offset-md-3">
-            <%= form.submit t('.create'), class: "btn btn-primary py-1 px-4" %>
+        <div class="row g-5 align-items-center mb-3">
+          <div class="col-3">
+            <%= form.label :name, t(".name"), class: 'col-md-4 col-form-label text-md-end' %>
           </div>
+          <div class="col">
+            <%= form.text_field :name, autofocus: true, autocomplete: "name", :placeholder => t(".input_name"),
+                                class: "form-control" %>
+          </div>
+        </div>
+        <div class="row g-5 align-items-center mb-3">
+          <div class="col-3">
+            <%= form.label :password, t(".password"), class: 'col-md-4 col-form-label text-md-end' %>
+          </div>
+          <div class="col">
+            <%= form.password_field :password, autofocus: true, autocomplete: "password", :placeholder => t(".input_password"), class: "form-control" %>
+          </div>
+        </div>
+        <div class="row g-5 align-items-center mb-3">
+          <div class="col-3">
+            <%= form.label :password_confirmation, t(".password_confirmation"), class: 'col-md-4 col-form-label text-md-end' %>
+          </div>
+          <div class="col">
+            <%= form.password_field :password, autofocus: true, autocomplete: "password_confirmation", :placeholder => t(".input_password_confirmation"), class: "form-control" %>
+          </div>
+        </div>
+        <div class="row g-5 align-items-center mb-3">
+          <div class="col-3">
+            <%= form.label :role, t(".role"), class: 'col-md-4 col-form-label text-md-end' %>
+          </div>
+          <div class="col">
+            <%= form.select :role, user_roles, {}, { class: "form-select" } %>
+          </div>
+        </div>
+        <div class="row align-items-center mb-3">
+            <%= form.submit t('.create'), class: "btn btn-primary py-1 px-4" %>
         </div>
       <% end %>
     </div>
