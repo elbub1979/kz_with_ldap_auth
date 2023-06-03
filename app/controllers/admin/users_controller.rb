@@ -12,6 +12,13 @@ class Admin::UsersController < AdminController
     @user = User.new(user_params)
     @user.update_attribute(:creator_id, @creator.id)
 
+    if params[:password].nil?
+      password_length = 8
+      password = Devise.friendly_token.first(password_length)
+      @user.update_attribute(:password, password)
+      @user.update_attribute(:password_confirmation, password)
+    end
+
     if @user.save
       redirect_to @user
     else

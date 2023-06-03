@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def user_roles
-    User.roles.to_a
+    User.roles.map { |key, _| key }
   end
 end
