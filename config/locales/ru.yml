@@ -4,19 +4,14 @@ ru:
     form:
       create: 'Создать'
       login: 'Логин'
+      input_login: "введите здесь логин"
+      create_user_in_local_base: "Создание пользователя в локальной базе данных"
+      role: "Роль"
+      name: "Имя"
+      input_name: "введите здесь имя"
+      password: "Пароль"
+      input_password: "введите здесь пароль"
+      password_confirmation: "Подтверждение пароля"
+      input_password_confirmation: "введите здесь подтверждение пароля"
     show:
       new_record: 'Новая запись'
-  admin:
-    users:
-      form:
-        login: "Логин"
-        create: "Создать"
-        input_login: "введите здесь логин"
-        create_user_in_local_base: "Создание пользователя в локальной базе данных"
-        role: "Роль"
-        name: "Имя"
-        input_name: "введите здесь имя"
-        password: "Пароль"
-        input_password: "введите здесь пароль"
-        password_confirmation: "Подтверждение пароля"
-        input_password_confirmation: "введите здесь подтверждение пароля"
