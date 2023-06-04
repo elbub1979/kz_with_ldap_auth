@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'users/sessions#destroy'
     get '/users/registration/new', to: 'users/registrations#new'
     post '/users/registration', to: 'users/registrations#create'
-
-
-    # get '/users/new', to: 'users#new'
-    # get '/users/:id', to: 'users#show'
-    # post '/users/:id', to: 'users#create'
   end
 
   namespace :admin do
