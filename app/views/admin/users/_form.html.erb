@@ -6,7 +6,7 @@
   </div>
   <div class="d-flex justify-content-center">
     <div class="flex-column">
-      <%= form_with model: [:admin, @user] do |form| %>
+      <%= form_with model: @user do |form| %>
         <div class="row g-5 align-items-center mb-3">
           <div class="col-3">
             <%= form.label :username, t(".login"), class: 'col-md-4 col-form-label text-md-end' %>

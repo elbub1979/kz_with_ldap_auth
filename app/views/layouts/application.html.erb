@@ -60,16 +60,16 @@
   </a>
 
   <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-    <li><%= button_to 'Get Users', ldap_users_admin_users_path, method: :get %></li>
-    <li><%= link_to 'New user', new_admin_user_path %></li>
-    <li><%= button_to 'New user', new_admin_user_path, method: :get %></li>
+    <li><%= button_to 'Get Users', ldap_users_users_path, method: :get %></li>
+    <li><%= link_to 'New user', new_user_path %></li>
+    <li><%= button_to 'New user', new_user_path, method: :get %></li>
     <li>
       <hr class="dropdown-divider">
     </li>
   </ul>
 </div>
 
-<%= button_to 'Get Users', ldap_users_admin_users_path, method: :get %>
+<%= button_to 'Get Users', ldap_users_users_path, method: :get %>
 
 <%= yield %>
 </body>

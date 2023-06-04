@@ -12,15 +12,11 @@ Rails.application.routes.draw do
     post '/users/registration', to: 'users/registrations#create'
   end
 
-  namespace :admin do
-    resources :users, except: %i[index show] do
-      collection do
-        get 'ldap_users'
-      end
+  resources :users do
+    collection do
+      get 'ldap_users'
     end
   end
-
-  resources :users, only: %i[index show]
 
   root to: 'static_pages#home'
 end
