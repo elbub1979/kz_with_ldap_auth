@@ -1,22 +1,28 @@
 class UsersController < ApplicationController
-  before_action
+  before_action :set_user, except: %i[index new create]
 
   def index
     @users = User.all
   end
 
-  def show; end
+  def show
+    authorize User
+  end
 
   def new
     @user = User.new
+    authorize User
   end
 
   def create
-    @creator = current_user
     @user = User.new(user_params)
+
+    authorize User
+
+    @creator = current_user
     @user.update_attribute(:creator_id, @creator.id)
 
-    if params[:password].nil?
+    if params[:user][:password].empty?
       password_length = 8
       password = Devise.friendly_token.first(password_length)
       @user.update_attribute(:password, password)
@@ -30,9 +36,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize User
+  end
 
   def update
+    authorize User
+
     if @user.update(user_params)
       redirect_to @user
     else
@@ -40,7 +50,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    authorize User
+  end
+
 
   # custom actions
 
