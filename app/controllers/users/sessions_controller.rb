@@ -27,6 +27,7 @@ class Users::SessionsController < Devise::SessionsController
 
       # аутентификация в локальной базе данных
       self.resource = warden.authenticate!(:database_authenticatable)
+      set_flash_message(:notice, :signed_in_db)
     else
 
       # проверка наличия пользвателя в локальной базе данных и валидности данных,
@@ -36,6 +37,7 @@ class Users::SessionsController < Devise::SessionsController
 
       # аутентификация ldap
       self.resource = warden.authenticate!(:ldap_authenticatable)
+      set_flash_message(:notice, :signed_in_ldap)
 
       # если пользователь отсутствует в локальной базе данных (новый)
       unless possible_user

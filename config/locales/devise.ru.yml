@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
-en:
+ru:
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты был успешно подтвержден."
@@ -46,7 +46,8 @@ en:
       updated: "Ваша учетная запись была успешно обновлена."
       updated_but_not_signed_in: "Ваша учетная запись была успешно обновлена, но поскольку ваш пароль был изменен, вам необходимо снова войти в систему."
     sessions:
-      signed_in: "Успешно вошел в систему."
+      signed_in_db: "Успешно вошел в систему (local)."
+      signed_in_ldap: "Успешно вошел в систем (ldap)."
       signed_out: "Успешно вышел из системы."
       already_signed_out: "Успешно вышел из системы."
     unlocks:

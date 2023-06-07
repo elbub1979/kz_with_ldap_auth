@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-
-  # before_action :authorized?
+  include Pundit::Authorization
 
   before_action :authenticate_user!
+
+  add_flash_types :info, :error, :success
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -17,13 +17,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authorized?
-    return if current_user.has_role? :admin
-
-    flash[:error] = 'You are not authorized to view that page.'
-    redirect_to root_path
-  end
-
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
 
@@ -31,4 +24,3 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 end
-

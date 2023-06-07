@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
-      redirect_to @user
+      redirect_to @user, notice: I18n.t('.create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     authorize User
 
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to @user, notice: I18n.t('.updated')
     else
       render :edit, status: :unprocessable_entity
     end

@@ -20,3 +20,5 @@ en:
     user_policy:
       update?: 'You cannot edit this user!'
       create?: 'You cannot create user!'
+  create: "User created"
+  updated: ""
