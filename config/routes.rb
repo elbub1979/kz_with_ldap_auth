@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    collection do
-      get 'ldap_users'
-    end
+    get 'ldap_users', on: :collection
   end
 
   root to: 'static_pages#home'

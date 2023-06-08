@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: %i[index new create]
+  before_action :set_user, except: %i[index new create ldap_users]
 
   def index
     @users = User.all
