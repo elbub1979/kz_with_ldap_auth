@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_191051) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_184315) do
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -26,7 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_191051) do
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
     t.integer "creator_id"
+    t.datetime "discarded_at"
     t.index ["creator_id"], name: "index_users_on_creator_id"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

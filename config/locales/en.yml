@@ -21,4 +21,7 @@ en:
       update?: 'You cannot edit this user!'
       create?: 'You cannot create user!'
   create: "User created"
-  updated: ""
+  updated: "User updated"
+  destroy: "USer destroy"
+  undestroy: "User don't destroy"
+

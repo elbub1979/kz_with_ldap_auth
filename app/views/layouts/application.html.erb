@@ -32,10 +32,11 @@
       </form>
       <% if user_signed_in? %>
         <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <p><%= current_user.short_name %></p>
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+
+          <%= link_to (current_user.short_name), {}, class: "d-block link-dark text-decoration-none dropdown-toggle",
+                      id: "dropdownUser1", 'data-bs-toggle': "dropdown", 'aria-expanded': "false" %>
+
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -66,14 +67,12 @@
     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
       <li><%= button_to 'Get Users', ldap_users_users_path, method: :get %></li>
       <li><%= button_to 'New user', new_user_path, method: :get %></li>
+      <li><%= button_to 'Show users', users_path, method: :get %></li>
       <li>
         <hr class="dropdown-divider">
       </li>
     </ul>
   </div>
-
-
-  <%= button_to 'Get Users', ldap_users_users_path, method: :get %>
 
   <%= yield %>
 </div>

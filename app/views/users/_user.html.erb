@@ -1,13 +1,14 @@
-<div>
-  <p>
-    <%= user.name %>
-  </p>
-  <p>
-    <%= user.username %>
-  </p>
-  <p>
-    <%= user.email %>
-  </p>
-  <%= button_to "Create", users_path,
-                params: user_params(user)%>
-</div>
+<% if user.kept? %>
+  <div>
+    <p>
+      <%= user.name %>
+    </p>
+    <p>
+      <%= user.username %>
+    </p>
+    <p>
+      <%= user.email %>
+    </p>
+    <%= button_to "Delete my account", user_path(user), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
+  </div>
+<% end %>

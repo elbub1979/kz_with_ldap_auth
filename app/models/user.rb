@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  # Для soft destroy
+  include Discard::Model
+
   # перечисление для ролей пользователя (базовый - 0, администратор - 1)
   enum role: { basic: 0, admin: 1 }
 
@@ -33,4 +36,14 @@ class User < ApplicationRecord
   def has_role?(role)
     self.role.to_sym == role
   end
+
+  # переопределение devise метода для определения удалённых soft delete методом пользоватлелй
+  def active_for_authentication?
+    super && !discarded?
+  end
+
+  def unkept?
+    !kept?
+  end
+
 end

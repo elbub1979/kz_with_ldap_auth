@@ -52,6 +52,12 @@ class UsersController < ApplicationController
 
   def destroy
     authorize User
+    if @user.discard
+      redirect_to root_path, notice: I18n.t('.destroy')
+    else
+      redirect_to @user, notice: I18n.t('.undestroy')
+    end
+
   end
 
 

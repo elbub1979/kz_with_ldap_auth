@@ -1,1 +1,9 @@
-<%= render partial: 'users/user', collection: @users %>
+<% if Rails.application.routes.recognize_path(request.referer)[:action] == 'index' %>
+  <%= render partial: 'users/user', collection: @users %>
+<% else %>
+  <%= render partial: 'users/ldap/user', collection: @users %>
+<% end %>
+
+
+
+
