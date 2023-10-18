@@ -7,7 +7,8 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
+  <%= javascript_importmap_tags("application", shim: false) %>
+    <%= javascript_importmap_tags %>
 </head>
 
 <body>
@@ -32,15 +33,13 @@
       </form>
       <% if user_signed_in? %>
         <div class="dropdown text-end">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-
-          <%= link_to (current_user.short_name), {}, class: "d-block link-dark text-decoration-none dropdown-toggle",
+          <%= link_to image_tag('https://github.com/mdo.png', width: "32", height:"32", alt: "mdo",
+                                class: "rounded-circle mx-2") + current_user.short_name, {},
+                      class: "d-block link-dark text-decoration-none dropdown-toggle",
                       id: "dropdownUser1", 'data-bs-toggle': "dropdown", 'aria-expanded': "false" %>
 
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><%= link_to 'Settings', edit_user_path(current_user), class: "dropdown-item" %></li>
             <li>
               <hr class="dropdown-divider">
             </li>

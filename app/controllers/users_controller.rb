@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   def ldap_users
     ad = ActiveDirectory::LdapConnect.new
     @users = ad.read.map { |user| User.new(user) }.sort_by { |user| user[:name] }
-    render 'users/index'
+    render 'users/ldap/index'
   end
 
   private

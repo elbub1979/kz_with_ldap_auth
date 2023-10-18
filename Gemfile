@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.0.6'
 
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.1.3'
@@ -9,6 +9,7 @@ gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'discard', '~> 1.2'
 gem 'importmap-rails'
+gem 'jass-react-jsx'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
 gem 'pundit'
