@@ -32,10 +32,8 @@
       </form>
       <% if user_signed_in? %>
         <div class="dropdown text-end">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-
-          <%= link_to (current_user.short_name), {}, class: "d-block link-dark text-decoration-none dropdown-toggle",
-                      id: "dropdownUser1", 'data-bs-toggle': "dropdown", 'aria-expanded': "false" %>
+          <%= link_to (current_user.short_name), {}, class: "dropdown-toggle",
+                      id: "dropdownMenuLink", 'data-bs-toggle': "dropdown", 'aria-expanded': "false" %>
 
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">New project...</a></li>
